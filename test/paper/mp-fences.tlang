@@ -1,0 +1,14 @@
+loc x;
+loc y;
+run {
+	write x 1;
+	rel;
+	write y 1;
+	0
+}
+run {
+	reg a = read y;
+	acq;
+	reg b = read x;
+	a == 1 && b == 0
+}

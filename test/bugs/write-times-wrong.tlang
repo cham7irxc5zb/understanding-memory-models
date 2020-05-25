@@ -1,0 +1,7 @@
+loc x;
+run {
+	write x 1;
+	write x 1;
+	write x 1;
+	0
+}

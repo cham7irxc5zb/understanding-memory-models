@@ -1,0 +1,21 @@
+loc x;
+loc y;
+run {
+	reg r;
+	if read y == 1 {
+		update x r 1;
+	} else {
+		update x r 2;
+	}
+	write x 3;
+	0
+}
+run {
+	if read x == 3 {
+		write y 1;
+	}
+	0
+}
+run {
+	read x == 1
+}

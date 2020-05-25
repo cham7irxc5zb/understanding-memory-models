@@ -1,0 +1,30 @@
+loc x;
+loc y;
+
+run {
+	reg tmp;
+	reg r = read y;
+	if r != 0 {
+		write x 1;
+	} else {
+		write x 2;
+	}
+	update x tmp 3;
+	r
+}
+
+run {
+	if read y == 1 {
+		write x 0;
+		read x == 3
+	} else {
+		0
+	}
+}
+
+run {
+	if read x == 3 {
+		write y 1;
+	}
+	0
+}

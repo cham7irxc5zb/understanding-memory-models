@@ -1,0 +1,13 @@
+loc val;
+loc ctl;
+run {
+	write val 1;
+	write rel ctl 1;
+	0
+}
+run {
+	reg r = read ctl;
+	acq;
+	reg r2 = read val;
+	r == 1 && r2 == 0
+}

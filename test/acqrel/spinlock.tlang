@@ -1,0 +1,19 @@
+loc lock;
+loc val;
+
+proc p {
+	reg r;
+	update acq lock r if r == 0 { 1 } else { break };
+	if r != 0 {
+		return -1;
+	}
+
+	r = read val;
+	write val 1;
+
+	write rel lock 0;
+
+	r
+}
+run p;
+run p;

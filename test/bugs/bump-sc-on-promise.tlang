@@ -1,0 +1,28 @@
+loc x;
+loc y;
+
+run {
+	reg r1 = read x;
+	reg r2 = read x;
+	r1 == 2 && r2 == 1
+}
+
+run {
+	write x 1;
+	sc;
+	write y 1;
+	0
+}
+
+run {
+	if read y == 1 {
+		sc;
+		write x 2;
+	}
+	0
+}
+
+run {
+	write x 0;
+	0
+}

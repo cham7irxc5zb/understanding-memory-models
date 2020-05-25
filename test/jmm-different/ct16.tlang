@@ -1,0 +1,11 @@
+loc x;
+run {
+	reg r1 = read x;
+	write x 1;
+	r1
+}
+run {
+	reg r2 = read x;
+	write x 2;
+	r2
+}

@@ -1,0 +1,8 @@
+loc x;
+run {
+	write x 0;
+	reg r;
+	update x r 0;
+	write x 0;
+	0
+}

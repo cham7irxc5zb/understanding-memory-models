@@ -1,0 +1,16 @@
+loc x;
+loc y;
+run {
+	reg r1 = read x;
+	if r1 == 1 {
+		write y 1;
+	}
+	r1
+}
+run {
+	reg r2 = read y;
+	if r2 == 1 {
+		write x 1;
+	}
+	r2
+}

@@ -1,0 +1,13 @@
+loc x;
+run {
+	reg r = read x;
+	write x 1;
+	0
+}
+proc t {
+	reg r;
+	update x r if r == 0 { 1 } else { break };
+	r == 0
+}
+run t;
+run t;

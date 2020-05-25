@@ -1,0 +1,20 @@
+loc x;
+loc y;
+loc z;
+
+run {
+	write x 1;
+	write rel y 1;
+	write z 1;
+	0
+}
+run {
+	reg a = read acq y;
+	reg b = read x;
+	if a == 1 { b } else { -1 }
+}
+run {
+	reg c = read acq z;
+	reg d = read x;
+	if c == 1 { d } else { -1 }
+}

@@ -1,0 +1,40 @@
+loc x0;
+loc x1;
+loc victim;
+loc val;
+
+run {
+	write x0 1;
+	sc;
+	write victim 0;
+	sc;
+
+	loop if read x1 == 1 && read victim == 0 && { sc; 1 };
+	sc;
+
+	reg r = read val;
+	write val 1;
+
+	sc;
+	write x0 0;
+
+	r
+}
+
+run {
+	write x1 1;
+	sc;
+	write victim 1;
+	sc;
+
+	loop if read x0 == 1 && read victim == 1 && { sc; 1 };
+	sc;
+
+	reg r = read val;
+	write val 1;
+
+	sc;
+	write x1 0;
+
+	r
+}

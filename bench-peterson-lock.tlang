@@ -1,0 +1,76 @@
+loc x0;
+loc x1;
+loc victim;
+loc val;
+
+run {
+	write x0 1;
+	sc;
+	write victim 0;
+	sc;
+
+	if read x1 == 1 && read victim == 0 { ignore };
+	acq;
+
+	reg r = read val;
+	if r < 5 {
+		write val (r + 1);
+	}
+
+	rel;
+	write x0 0;
+
+	write x0 1;
+	sc;
+	write victim 0;
+	sc;
+
+	if read x1 == 1 && read victim == 0 { ignore };
+	acq;
+
+	reg r2 = read val;
+	if r2 < 5 {
+		write val (r2 + 1);
+	}
+
+	rel;
+	write x0 0;
+
+	r * 10 + r2 + 11
+}
+
+run {
+	write x1 1;
+	sc;
+	write victim 1;
+	sc;
+
+	if read x0 == 1 && read victim == 1 { ignore };
+	acq;
+
+	reg r = read val;
+	if r < 5 {
+		write val (r + 1);
+	}
+
+	rel;
+	write x1 0;
+
+	write x1 1;
+	sc;
+	write victim 1;
+	sc;
+
+	if read x0 == 1 && read victim == 1 { ignore };
+	acq;
+
+	reg r2 = read val;
+	if r2 < 5 {
+		write val (r2 + 1);
+	}
+
+	rel;
+	write x1 0;
+
+	r * 10 + r2 + 11
+}

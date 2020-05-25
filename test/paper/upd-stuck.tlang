@@ -1,0 +1,19 @@
+loc x;
+loc y;
+loc z;
+run {
+	reg a = read x;
+	reg b;
+	update z b if b < 10 { b + 1 } else { break };
+	write y (b + 1);
+	a == 1 && b == 0
+}
+run {
+	write x (read y);
+	0
+}
+run {
+	reg r;
+	update z r if r < 10 { r + 1 } else { break };
+	0
+}

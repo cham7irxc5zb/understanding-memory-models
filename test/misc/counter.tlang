@@ -1,0 +1,14 @@
+loc x;
+proc inc {
+	reg r;
+	update x r if r < 100 { 100 } else { break };
+	if r < 100 {
+		write x (r + 1);
+	} else {
+		r = 100;
+	}
+	r
+}
+run inc;
+run inc;
+run inc;

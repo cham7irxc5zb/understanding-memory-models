@@ -1,0 +1,16 @@
+[package]
+name = "umm"
+version = "0.1.0"
+authors = ["Candidate 1013994 <65890263+cham7irxc5zb@users.noreply.github.com>"]
+edition = "2018"
+
+[profile.dev]
+incremental = true
+panic = "abort"
+opt-level = 2
+
+[profile.release]
+incremental = false
+panic = "abort"
+opt-level = 3
+lto = true

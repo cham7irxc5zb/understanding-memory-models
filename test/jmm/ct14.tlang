@@ -1,0 +1,42 @@
+loc a;
+loc b;
+loc y;
+
+run {
+	reg r1 = read a;
+	if r1 == 0 {
+		sc;
+		write y 1;
+	} else {
+		write b 1;
+	}
+	r1
+}
+
+run {
+	reg r2;
+	reg r3;
+
+	r2 = read y;
+	sc;
+	r3 = read b;
+
+	if r2 + r3 == 0 {
+		r2 = read y;
+		sc;
+		r3 = read b;
+	}
+
+	if r2 + r3 == 0 {
+		r2 = read y;
+		sc;
+		r3 = read b;
+	}
+
+	if r2 + r3 == 0 {
+		return -1;
+	}
+
+	write a 1;
+	10 * r2 + r3
+}

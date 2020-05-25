@@ -1,0 +1,32 @@
+loc l0;
+loc l1;
+run {
+	write l0 1;
+	0
+}
+run {
+	write l1 0;
+	rel;
+	write l0 1;
+	0
+}
+run {
+	reg r0; update l0 r0 if r0 != 0 { 0 } else { break };
+	if r0 != 0 {
+		rel;
+		write l1 1;
+	}
+	0
+}
+run {
+	reg r1 = read l1;
+	if r1 == 1 {
+		acq;
+		reg r2 = read l0;
+		if r2 == 0 {
+			acq;
+			reg r3; update l1 r3 1;
+		}
+	}
+	0
+}

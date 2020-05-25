@@ -1,0 +1,18 @@
+loc x;
+loc y;
+run {
+	reg a = read x;
+	reg r;
+	if a == 2 {
+		update y r if r < 10 { r + 1 } else { break };
+		update y r if r < 10 { r + 2 } else { break };
+		update y r if r < 10 { r + 1 } else { break };
+	} else {
+		update y r if r < 10 { r + 2 } else { break };
+	}
+	a == 2
+}
+run {
+	write x (read y);
+	0
+}

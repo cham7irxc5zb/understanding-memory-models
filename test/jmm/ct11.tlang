@@ -1,0 +1,18 @@
+loc x;
+loc y;
+loc z;
+loc w;
+run {
+	reg r1 = read z;
+	write w r1;
+	reg r2 = read x;
+	write y r2;
+	10 * r1 + r2
+}
+run {
+	reg r4 = read w;
+	reg r3 = read y;
+	write z r3;
+	write x 1;
+	10 * r3 + r4
+}

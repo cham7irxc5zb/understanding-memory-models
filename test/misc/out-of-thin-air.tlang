@@ -1,0 +1,44 @@
+loc x;
+loc y;
+loc z;
+
+run {
+	reg r = read x;
+	if r == 1 {
+		write y 1;
+	}
+	sc;
+	read z == 0 && r == 1
+}
+
+run {
+	reg r = read y;
+	if r == 1 {
+		write x 1;
+	}
+	sc;
+	read z == 0 && r == 1
+}
+
+run {
+	reg r;
+	update z r 1;
+	if r == 0 {
+		write x 1;
+		write y 1;
+		1
+	} else {
+		0
+	}
+}
+
+run {
+	reg r;
+	update z r 1;
+	if r == 0 {
+		sc;
+		write x 1;
+		write y 1;
+	}
+	0
+}

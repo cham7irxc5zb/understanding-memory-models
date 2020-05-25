@@ -1,0 +1,18 @@
+loc x;
+loc y;
+run {
+	write x 1;
+	write rel y 1;
+	write y 2;
+	0
+}
+run {
+	reg r;
+	update y r (r + 1)%4;
+	0
+}
+run {
+	reg a = read acq y;
+	reg b = read x;
+	a == 3 && b == 0
+}

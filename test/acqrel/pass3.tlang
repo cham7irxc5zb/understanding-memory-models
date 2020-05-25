@@ -1,0 +1,35 @@
+loc val;
+loc ctl;
+run {
+	write val 1;
+	write rel ctl 1;
+	write val 2;
+	write rel ctl 2;
+	write val 3;
+	write rel ctl 3;
+	write val 4;
+	write rel ctl 4;
+	write val 5;
+	write rel ctl 5;
+	0
+}
+run {
+	if read ctl < 3 {
+		return -1;
+	}
+	acq;
+	read val
+}
+run {
+	if read acq ctl < 4 {
+		return -1;
+	}
+	read val
+}
+run {
+	if read ctl < 5 {
+		return -1;
+	}
+	acq;
+	read val
+}

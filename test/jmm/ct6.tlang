@@ -1,0 +1,19 @@
+loc A;
+loc B;
+run {
+	reg r1 = read A;
+	if r1 == 1 {
+		write B 1;
+	}
+	r1
+}
+run {
+	reg r2 = read B;
+	if r2 == 1 {
+		write A 1;
+	}
+	if r2 == 0 {
+		write A 1;
+	}
+	r2
+}

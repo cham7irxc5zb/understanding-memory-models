@@ -1,0 +1,11 @@
+loc x;
+loc y;
+run {
+	reg a = read x;
+	write y 1;
+	a == 1
+}
+run {
+	write x (read y);
+	0
+}
